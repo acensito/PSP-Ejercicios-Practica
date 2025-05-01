@@ -1,5 +1,4 @@
-
-# Ejercicio tipo 1
+# Fabrica Piezas
 
 Estamos en una fábrica que produce piezas mecánicas. La fábrica cuenta con tres máquinas automáticas que generan piezas y las colocan en una cinta transportadora circular para que luego una máquina empaquetadora las recoja y las embale.
 
@@ -18,7 +17,7 @@ Mostrar el mensaje “Fábrica cerrada” cuando todos los hilos terminen.
 
 ---
 
-# Ejercicio tipo 2
+# Practica Farmacia
 
 ## Versión 1: Simulación Cliente-Servidor de Farmacia
 
