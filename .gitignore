@@ -1,0 +1,5 @@
+# Ignorar carpetas generadas por NetBeans en cada proyecto
+**/build/
+**/temp/
+**/dist/
+**/nbproject/private/
