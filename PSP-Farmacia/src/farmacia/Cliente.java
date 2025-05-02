@@ -1,6 +1,7 @@
 
 package farmacia;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.Random;
@@ -23,7 +24,8 @@ public class Cliente extends Thread {
     @Override
     public void run() {
         try (Socket skClient = new Socket(HOST, PORT);
-             DataOutputStream out = new DataOutputStream(skClient.getOutputStream())){
+             DataOutputStream out = new DataOutputStream(skClient.getOutputStream());
+             DataInputStream in = new DataInputStream(skClient.getInputStream())){
             //mensaje informando quien entra en la farmacia
             System.out.printf("%s entra en la farmacia.\n", getName());
             //generamos un pedido aleatorio de un medicamento
@@ -33,7 +35,10 @@ public class Cliente extends Thread {
             //se envia el pedido al servidor
             out.writeInt(medicamento);
             out.writeInt(cantidad);
-            System.out.printf("%s sale de la farmacia.\n", getName());
+            boolean resultado = in.readBoolean();
+            System.out.printf("%s sale de la farmacia %s.\n", 
+                getName(),
+                resultado ? "contento" : "enfadado");
             
         } catch (Exception e) {
             System.err.println("Error: se ha encontrado un error en lado cliente");

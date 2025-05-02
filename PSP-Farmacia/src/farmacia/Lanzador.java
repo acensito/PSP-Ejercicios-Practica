@@ -35,8 +35,7 @@ public class Lanzador {
         System.out.printf("""
                 --- FARMACIA DE GUARDIA ---
                 0. Simular pedidos de clientes
-                1. Ver stocks de almacén
-                2. Finalizar programa
+                1. Finalizar programa
                 Seleccione una opción: """);
     }
 
@@ -51,8 +50,7 @@ public class Lanzador {
     private static void procesarOpcion(int opcion) {
         switch (opcion) {
             case 0 -> lanzarClientes();
-            case 1 -> mostrarStocks();
-            case 2 -> {
+            case 1 -> {
                 activo = false;
                 System.out.println("Finalizando ejecucion de clientes. Cerrando.");
             }
@@ -89,12 +87,4 @@ public class Lanzador {
         //limpiamos el array para un siguiente uso
         clientes.clear();
     }
-    
-    /**
-     * Método que muestra el stock en almacén
-     */
-    private static void mostrarStocks() {
-        System.out.println(Farmacia.toStringAlmacen());
-    }
-    
 }
