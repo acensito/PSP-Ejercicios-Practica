@@ -17,7 +17,7 @@ public class Maquina extends Thread {
     public void run() {
         //mientras que el numero de piezas fabricadas sea menor
         //las piezas almacenadas
-        while(fabrica.getEmpaquetados() < fabrica.getCAPACIDAD()){
+        while(fabrica.getFabricados()< fabrica.getCAPACIDAD()){
             try {
                 fabrica.colocarPieza(this.getName());
                 Thread.sleep(random.nextInt(1000, 4000));

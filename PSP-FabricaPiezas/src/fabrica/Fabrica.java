@@ -16,8 +16,7 @@ public class Fabrica {
                 System.out.println("Error");
             }
         }
-        cinta++;
-        fabricados++;
+        fabricar();
         System.out.println( name + " ha fabricado una pieza. \nPiezas en la cinta: " + cinta);
         notifyAll();
     }
@@ -30,14 +29,13 @@ public class Fabrica {
                 System.out.println("Error");
             }
         }
-        cinta--;
-        this.empaquetados++;
+        empaquetar();
         System.out.println( name + " ha empaquetado una pieza. \nPiezas en la cinta: " + cinta);
         notifyAll();
     }
 
     public synchronized int getFabricados() {
-        return empaquetados;
+        return fabricados;
     }
 
     public synchronized int getEmpaquetados() {
@@ -46,6 +44,16 @@ public class Fabrica {
 
     public synchronized int getCAPACIDAD() {
         return ALMACEN;
+    }
+    
+    private void fabricar(){
+        cinta++;
+        fabricados++;
+    }
+    
+    private void empaquetar() {
+        cinta--;
+        empaquetados++;
     }
     
 }
