@@ -329,6 +329,7 @@ public class Servidor {
             //reescribimos el archivo
             try (PrintWriter pr = new PrintWriter(new FileWriter(BD_FARMACIA))) {
                 for (Map.Entry<String, Integer> entry : stocks.entrySet()) {
+                    System.out.println(entry.getKey() + ":" + entry.getValue());
                     pr.println(entry.getKey() + ":" + entry.getValue());
                 }
             } catch (IOException e) {
