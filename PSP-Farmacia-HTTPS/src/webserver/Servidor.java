@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -20,6 +21,7 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
@@ -221,13 +223,13 @@ public class Servidor {
                     //obtener los valores enteros de cada uno para crear un
                     //array clave-valor
                     //creamos el array
-                    ArrayList<Integer> claveValor = new ArrayList<>();
+                    ArrayList<String> claveValor = new ArrayList<>();
                     //separamos los datos por el simbolo =, nos quedamos con el
                     //segundo componente, el valor, asi de esta manera, si recibimos
                     //medicamento=1&cantidad=3 quedaria un array [1,3] mas manejable
                     for (String dato : datos) {
                         String[] soloValores = dato.split("=");
-                        claveValor.add(Integer.valueOf(soloValores[1]));
+                        claveValor.add(soloValores[1]);
                     }
                     
                     //Ahora, llamamos al metodo sincronizado correspondiente
@@ -242,18 +244,13 @@ public class Servidor {
                     }
                     
                     //En este punto, entendemos que existe el archivo de base de
-                    //datos, asi que obtenemos sus datos
-                    HashMap<String, Integer> almacen = new HashMap<>();
+                    //datos, asi que actualizamos los datos
+                    String reponseRESULTADO = actualizarStocks(claveValor)
+                        ? String.format(Response.INFO, "Pedido suministrado correctamente")
+                        : String.format(Response.ERROR, "Hay problemas de stock del medicamento solicitado");
+
+                    responseHTML = String.format(Response.INDEX, reponseRESULTADO);
                     
-                    almacen = leerArchivoDatos();
-                    
-                    //AQUI ME VOY A PARAR POR HOY, DEBO CONTINUAR Y COMPROBAR EL
-                    //STOCK
-                    
-                    //SI EL QUE ESTA VIENDO ESTO HA LLEGADO AQUI ANTES QUE YO, 
-                    //                 PRODUCE CABESA!!!!
-                    
-                    responseHTML = "";
                 } else { //GET
                     responseHTML = String.format(Response.INDEX, "");
                 }
@@ -274,23 +271,74 @@ public class Servidor {
                    + contenido;                                                             //Cuerpo
         }
         
-        private synchronized static HashMap<String, Integer> leerArchivoDatos() {
-            //variable contenedor a devolver
-            HashMap<String, Integer> stocks = new HashMap<>();
-            //leemos el archivo
-            try (BufferedReader br = new BufferedReader(new FileReader(BD_FARMACIA))){
-                String linea;
-                while ((linea = br.readLine()) != null) {                    
-                    String[] partes = linea.split(":");
-                    String medicamento = partes[0].trim();
-                    int cantidad = Integer.parseInt(partes[1].trim());
-                    stocks.put(medicamento, cantidad);
-                }
-            } catch (Exception e) {
-                System.err.println("Error al leer el archivo: " + e.getMessage());
+        /**
+         * Metodo que recibe por parametro un ArrayList el cual tiene dos valores
+         * la primera posicion corresponderá con el key de un medicamento solicitado
+         * la segunda posicion será la cantidad del pedido.
+         * 
+         * Se obtendrá de disco los stocks de medicamentos y se ajustará los stocks
+         * debidos. Devolverá true si se ha podido realizar el pedido. False en caso
+         * de existir algun problema.
+         * 
+         * @param pedido
+         * @return boolean
+         */
+        private synchronized static boolean actualizarStocks(ArrayList<String> pedido) {
+            //datos del pedido realizado
+            final String keyMedicamento = pedido.get(0).trim();
+            final int cantidadSolicitada;
+
+            try {
+                //se obtiene la cantidad pedida, se pasa de string a int
+                cantidadSolicitada = Integer.parseInt(pedido.get(1).trim());
+            } catch (NumberFormatException e) {
+                System.err.println("Cantidad inválida: " + pedido.get(1));
+                return false;
             }
-            return stocks;
+            //datos de stocks de medicamentos
+            Map<String, Integer> stocks = new HashMap<>();
+
+            //procedemos a leer el archivo
+            try (BufferedReader br = new BufferedReader(new FileReader(BD_FARMACIA))) {
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    String[] partes = linea.split(":");
+                    if (partes.length == 2) {
+                        String medicamento = partes[0].trim();
+                        int cantidad = Integer.parseInt(partes[1].trim());
+                        stocks.put(medicamento, cantidad);
+                    }
+                }
+            } catch (IOException | NumberFormatException e) {
+                System.err.println("Error al leer el archivo: " + e.getMessage());
+                return false;
+            }
+
+            //validamos si existe el medicamento solicitado
+            if (!stocks.containsKey(keyMedicamento)) {
+                return false;
+            }
+            //validamos si hay stock suficiente del medicamento solicitado
+            int stockActual = stocks.get(keyMedicamento);
+            if (stockActual < cantidadSolicitada) {
+                return false; //no hay suficiente
+            }
+            //actualizamos el stock
+            stocks.put(keyMedicamento, stockActual - cantidadSolicitada);
+
+            //reescribimos el archivo
+            try (PrintWriter pr = new PrintWriter(new FileWriter(BD_FARMACIA))) {
+                for (Map.Entry<String, Integer> entry : stocks.entrySet()) {
+                    pr.println(entry.getKey() + ":" + entry.getValue());
+                }
+            } catch (IOException e) {
+                System.err.println("Error al escribir el archivo: " + e.getMessage());
+                return false;
+            }
+            
+            return true;
         }
+
         
     }
     

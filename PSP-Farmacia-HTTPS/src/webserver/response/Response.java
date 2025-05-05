@@ -33,9 +33,9 @@ public class Response {
                             <div class="control">
                                 <div class="select is-medium">
                                     <select name="medicamento">
-                                        <option value="1">Paracetamol</option>
-                                        <option value="2">Ibuprofeno</option>
-                                        <option value="3">Vitamina C</option>
+                                        <option value="paracetamol">Paracetamol</option>
+                                        <option value="ibuprofeno">Ibuprofeno</option>
+                                        <option value="vitamina">Vitamina C</option>
                                     </select>
                                 </div>
                             </div>

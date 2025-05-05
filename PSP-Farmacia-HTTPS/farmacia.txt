@@ -1,0 +1,3 @@
+ibuprofeno:100
+vitamina:85
+paracetamol:67
