@@ -42,9 +42,8 @@ Donde `mydomain` es el alias del certificado, `keystore.jks` es el nombre del ar
 3. Al pulsar el botón, se realiza una petición `POST` al servidor.
 4. El servidor responde con la misma página HTML, pero incluyendo una **frase aleatoria** bajo el botón.
 
-<img src="https://i.ibb.co/1YDvdsYX/Screenshot-2025-05-07-at-21-15-43-Chiquito-Wiki.png" alt="Screenshot-2025-05-07-at-21-15-43-Chiquito-Wiki" border="0">
-<img src="https://i.ibb.co/mrnfdG5K/Screenshot-2025-05-07-at-21-15-55-Chiquito-Wiki.png" alt="Screenshot-2025-05-07-at-21-15-55-Chiquito-Wiki" border="0">
 <img src="https://i.ibb.co/PG1R9nNn/Screenshot-2025-05-07-at-21-53-48-Chiquito-Wiki.png" alt="Screenshot-2025-05-07-at-21-53-48-Chiquito-Wiki" border="0">
+<img src="https://i.ibb.co/mrnfdG5K/Screenshot-2025-05-07-at-21-15-55-Chiquito-Wiki.png" alt="Screenshot-2025-05-07-at-21-15-55-Chiquito-Wiki" border="0">
 <img src="https://i.ibb.co/RkpdxgsD/Screenshot-2025-05-07-at-21-53-59-Chiquito-Wiki.png" alt="Screenshot-2025-05-07-at-21-53-59-Chiquito-Wiki" border="0">
 <img src="https://i.ibb.co/NgrSwSXT/Screenshot-2025-05-07-at-21-57-21-Chiquito-Wiki.png" alt="Screenshot-2025-05-07-at-21-57-21-Chiquito-Wiki" border="0">
 
