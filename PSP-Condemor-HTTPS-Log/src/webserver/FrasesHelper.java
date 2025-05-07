@@ -9,7 +9,7 @@ import java.util.Random;
  *
  * @author Felipe2T
  */
-public class Frases {
+public class FrasesHelper {
 
     private static final List<String> FRASES = Arrays.asList(
         "¡Fistro pecador de la pradera!",
