@@ -1,7 +1,7 @@
-# 📝 Enunciado del Proyecto: Registro Seguro a Videoconferencia
+# 📝 Enunciado del Proyecto: Registro a Newsletter
 
 ## 🎯 Objetivo
-Desarrollar una aplicación cliente-servidor en Java que funcione como una página web accesible por HTTPS y permita registrar participantes en una videoconferencia. El registro se realizará a través de un formulario, y los datos se almacenarán en un archivo local de forma segura y concurrente.
+Desarrollar una aplicación cliente-servidor en Java que funcione como una página web accesible por HTTPS y permita registrar participantes en una newsletter. El registro se realizará a través de un formulario, y los datos se almacenarán en un archivo local de forma segura y concurrente.
 
 ---
 
@@ -19,7 +19,7 @@ Desarrollar una aplicación cliente-servidor en Java que funcione como una pági
    - Si los datos son inválidos o el correo ya existe, se debe mostrar un mensaje de error claro y ofrecer la posibilidad de reintentar mostrando el formulario nuevamente.
 
 3. **Almacenamiento seguro de registros:**
-   - Si los datos son correctos, se debe guardar la información en un archivo de texto llamado `videoconferencia.txt`.
+   - Si los datos son correctos, se debe guardar la información en un archivo de texto llamado `newsletter.txt`.
    - Cada línea del archivo debe seguir el formato:
      ```
      nombre_alumno:correo@electronico
@@ -29,7 +29,7 @@ Desarrollar una aplicación cliente-servidor en Java que funcione como una pági
    - Se debe garantizar el acceso seguro al archivo cuando múltiples usuarios se registren simultáneamente (uso de `synchronized`).
 
 5. **Cifrado del archivo (opcional):**
-   - El archivo `videoconferencia.txt` puede almacenarse de forma cifrada usando un algoritmo simétrico como **AES**.
+   - El archivo `newsletter.txt` puede almacenarse de forma cifrada usando un algoritmo simétrico como **AES**.
    - En este caso, se debe poder cifrar al guardar y descifrar al leer.
 
 6. **Ruta adicional para consultar registros (opcional):**
