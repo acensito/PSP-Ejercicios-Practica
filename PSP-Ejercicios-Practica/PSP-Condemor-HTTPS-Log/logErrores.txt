@@ -1,6 +1,0 @@
-[2025-05-07 21:14:49] [ INFO ] peticion recibida y procesada por el servidor
-[2025-05-07 21:14:50] [ INFO ] peticion recibida y procesada por el servidor
-[2025-05-07 21:14:50] [ INFO ] peticion recibida y procesada por el servidor
-[2025-05-07 21:15:01] [ INFO ] peticion recibida y procesada por el servidor
-[2025-05-07 21:15:13] [ INFO ] peticion recibida y procesada por el servidor
-[2025-05-07 21:15:46] [ INFO ] peticion recibida y procesada por el servidor

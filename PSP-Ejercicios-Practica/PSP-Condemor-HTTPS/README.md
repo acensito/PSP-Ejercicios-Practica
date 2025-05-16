@@ -25,7 +25,7 @@ Donde `mydomain` es el alias del certificado, `keystore.jks` es el nombre del ar
 - Asegúrate de que el keystore se encuentre en la misma carpeta que tu código Java o proporciona la ruta completa al archivo.
 - Asegúrate de que el puerto que elijas para el servidor HTTPS esté disponible y no esté siendo utilizado por otro servicio. Puedes elegir un puerto como `8443`.
 
-### 🔌 Posibles mejoras/alternativas optativas a realizar
+### 🔌 Posibles mejoras optativas a realizar
 - Implementar un sistema de logging para registrar las peticiones y respuestas del servidor. 
 Por ejemplo: 
 ```log
