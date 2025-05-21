@@ -12,7 +12,7 @@ import java.util.Random;
  * gestionará la concurrencia de multiples clientes al archivo aunque no exista
  * escritura en el.
  * 
- * @author Felipe2T
+ * @author Felipe R.
  */
 public class FrasesHelper {
     private static final String ARCHIVO = "frases.txt";

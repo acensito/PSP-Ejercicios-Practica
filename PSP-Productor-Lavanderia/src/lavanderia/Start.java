@@ -6,6 +6,10 @@ import java.util.Scanner;
 
 /**
  *
+ * 
+ *  PENDIENTE DE TERMINAR
+ * 
+ * 
  * @author Felipe R.
  */
 public class Start {

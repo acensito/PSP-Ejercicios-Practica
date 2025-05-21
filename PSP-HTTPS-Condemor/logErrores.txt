@@ -1,0 +1,13 @@
+[2025-05-16 13:39:19] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 13:49:32] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 13:49:38] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 13:50:51] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 13:50:56] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 13:52:06] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 13:52:07] [ WARNING ] error al procesar la peticion recibida
+[2025-05-16 13:52:07] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 15:23:09] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 15:23:12] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 15:23:21] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 15:24:41] [ INFO ] peticion recibida y procesada por el servidor
+[2025-05-16 15:24:43] [ INFO ] peticion recibida y procesada por el servidor

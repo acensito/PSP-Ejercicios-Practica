@@ -13,7 +13,7 @@ import java.util.logging.SimpleFormatter;
 
 /**
  *
- * @author Felipe2T
+ * @author Felipe R.
  */
 public class LogHelper {
     //atributos de la clase
@@ -63,7 +63,7 @@ public class LogHelper {
      * Metodo que se encarga de escribir el mensaje en el log de tipo ERROR
      */
     public static void logError() {
-        logger.log(Level.SEVERE, "error al procesar la peticion recibida");
+        logger.log(Level.WARNING, "error al procesar la peticion recibida");
     }
     
     /**

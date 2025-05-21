@@ -10,7 +10,7 @@ import javax.net.ssl.SSLServerSocketFactory;
 
 /**
  * 
- * @author Felipe2T
+ * @author Felipe R.
  */
 public class SSLHelpers {
     public static final int PORT = 8443;                        //puerto

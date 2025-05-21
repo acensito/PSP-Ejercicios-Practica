@@ -7,7 +7,7 @@ import javax.net.ssl.SSLSocket;
 
 /**
  *
- * @author Felipe2T
+ * @author Felipe R.
  */
 public class LoopConexiones {
     /**

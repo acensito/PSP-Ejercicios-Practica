@@ -6,7 +6,7 @@ import javax.net.ssl.SSLServerSocket;
  * En esta versión, vamos a modificar Frases a FrasesHelper para acceder al archivo
  * de frases.txt y obtener de ahi las frases.
  * 
- * @author Felipe2T
+ * @author Felipe R.
  */
 public class Server {
 

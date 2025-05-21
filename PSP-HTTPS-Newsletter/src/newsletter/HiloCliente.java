@@ -6,11 +6,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 /**
  *
- * @author DGGC
+ * @author Felipe R.
  */
 public class HiloCliente extends Thread {
     private final Socket skClient;
@@ -58,8 +57,7 @@ public class HiloCliente extends Thread {
                 }
             }
             
-            //Si es una petición POST extraemos los datos recibidos y los
-            //almacenaremos como cuerpo de la solicitud
+            //Si es una petición POST extraemos los datos recibidos
             StringBuilder cuerpo = new StringBuilder(); 
             if (metodo.equals("POST") && contentLength > 0) {
                 char[] buffer = new char[contentLength];
@@ -100,14 +98,6 @@ public class HiloCliente extends Thread {
                + contenido;                                                             //Cuerpo
     }
     
-    /**
-     * Método que recibe el cuerpo de la petición ya sea POST o GET y actua como 
-     * controlador y logica de la petición
-     * 
-     * @param cuerpo de la peticion
-     * 
-     * @return String con el HTML conformado según proceda
-     */
     private String registroUsuarios(String cuerpo) {
         
         int codigo = 200;
@@ -120,8 +110,6 @@ public class HiloCliente extends Thread {
                 System.out.println(cuerpo);
 
                 //Separamos los datos del request en clave-valor
-                //primero separamos los tipos de datos
-                //medicamento=valor  y cantidad=medicamento
                 String[] datos = cuerpo.split("&");
                 String usuario = datos[0];
                 String email = datos[1];
@@ -131,9 +119,6 @@ public class HiloCliente extends Thread {
                 //Si existe, mandamos mensaje WARNING
                 
                 //Si no existe, mandamos mensaje SUCCESS
-
-
-
 
                 responseHTML = "";
 

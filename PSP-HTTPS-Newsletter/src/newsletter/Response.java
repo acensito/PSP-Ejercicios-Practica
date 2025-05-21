@@ -3,7 +3,7 @@ package newsletter;
 
 /**
  *
- * @author Felipe2T
+ * @author Felipe R.
  */
 public class Response {
     //cabeceras

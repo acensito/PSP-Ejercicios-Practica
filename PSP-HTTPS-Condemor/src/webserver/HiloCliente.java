@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  *
- * @author Felipe2T
+ * @author Felipe R.
  */
 public class HiloCliente extends Thread {
     private final Socket skClient;
