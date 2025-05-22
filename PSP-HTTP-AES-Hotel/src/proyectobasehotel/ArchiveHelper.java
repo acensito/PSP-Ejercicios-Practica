@@ -17,9 +17,10 @@ import javax.crypto.spec.SecretKeySpec;
  * @author Felipe R.
  */
 public class ArchiveHelper {
-    private static final String ENCRIPTACION = "";
+    private static final String ENCRIPTACION = "AES";
     private static final String CLAVE_AES = "1234567890123456";
-    private static final SecretKeySpec CLAVE = new SecretKeySpec(CLAVE_AES.getBytes(), ENCRIPTACION);
+    private static final SecretKeySpec CLAVE = 
+            new SecretKeySpec(CLAVE_AES.getBytes(), ENCRIPTACION);
     private static final int ENCRIPTAR = Cipher.ENCRYPT_MODE;
     private static final int DESENCRIPTAR = Cipher.DECRYPT_MODE;
     
@@ -79,9 +80,17 @@ public class ArchiveHelper {
     }
     
     public static synchronized void guardarDatos(String archivo, String datos) {
-        int datosDesEntero = Integer.parseInt(descifrarDatos(archivo));
+        String textoDescifrado = descifrarDatos(archivo);
+        System.out.println("DEBUG DESCIFRADO: " + textoDescifrado);
+        if (textoDescifrado == null || textoDescifrado.isBlank()) {
+            textoDescifrado = "0"; // Valor por defecto si el archivo estaba vacío o inválido
+        }
+
+        int datosDesEntero = Integer.parseInt(textoDescifrado);
+
         int datosEntero = Integer.parseInt(datos);
         String resultado = String.valueOf(datosDesEntero+datosEntero);
+        System.out.println("DEBUG RESULTADO: " + resultado);
         
         byte[] resultadoCifrado = procesarDatos(resultado.getBytes(StandardCharsets.UTF_8), ENCRIPTAR);
         

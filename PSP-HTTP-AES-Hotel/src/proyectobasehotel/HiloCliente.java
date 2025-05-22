@@ -92,15 +92,16 @@ public class HiloCliente extends Thread {
                 String[] datos = cuerpo.split("&");
                 String dia = datos[0].split("=")[1];
                 String cantidad = datos[1].split("=")[1];
-
                 
+                ArchiveHelper.guardarDatos(dia, cantidad);
+
                 responseHTML = construirResponse(CODIGO, Paginas.html_reservas);
             } else { //GET
                 responseHTML = construirResponse(CODIGO, Paginas.html_reservas);
             }
         } catch (Exception e) {
             responseHTML = construirResponse(404, Paginas.html_noEncontrado);
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
         
         return responseHTML;
