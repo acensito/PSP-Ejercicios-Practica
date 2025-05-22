@@ -24,16 +24,16 @@ public class ArchiveHelper {
     private static final int ENCRIPTAR = Cipher.ENCRYPT_MODE;
     private static final int DESENCRIPTAR = Cipher.DECRYPT_MODE;
     
-    //comprueba si el nombre de archivo pasado por parametro existe
-    public static synchronized void verificarExisteArchivo(String nombreArchivo) {
-        try {
-            if (new File(nombreArchivo+".txt").createNewFile()) {
-                System.out.println("Archivo "+nombreArchivo+".txt creado.");
-            }
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
+//    //comprueba si el nombre de archivo pasado por parametro existe
+//    public static synchronized void verificarExisteArchivo(String nombreArchivo) {
+//        try {
+//            if (new File(nombreArchivo+".txt").createNewFile()) {
+//                System.out.println("Archivo "+nombreArchivo+".txt creado.");
+//            }
+//        } catch (IOException ex) {
+//            System.err.println(ex.getMessage());
+//        }
+//    }
     //si se usan dentro de un metodo sincronizado no tienen por que ser sincronizados
     public static synchronized void escribirArchivo(byte[] datos, String nombreArchivo) {
         Path ruta = Paths.get(nombreArchivo + ".txt");
@@ -74,7 +74,7 @@ public class ArchiveHelper {
     public static synchronized String descifrarDatos(String archivo) {
         byte[] archivoBruto = leerArchivo(archivo);
         if (archivoBruto.length == 0) {
-            return ""; 
+            return "0"; 
         }
         return new String (procesarDatos(archivoBruto, DESENCRIPTAR), StandardCharsets.UTF_8);
     }
@@ -82,9 +82,9 @@ public class ArchiveHelper {
     public static synchronized void guardarDatos(String archivo, String datos) {
         String textoDescifrado = descifrarDatos(archivo);
         System.out.println("DEBUG DESCIFRADO: " + textoDescifrado);
-        if (textoDescifrado == null || textoDescifrado.isBlank()) {
-            textoDescifrado = "0"; // Valor por defecto si el archivo estaba vacío o inválido
-        }
+//        if (textoDescifrado == null || textoDescifrado.isBlank()) {
+//            textoDescifrado = "0"; // Valor por defecto si el archivo estaba vacío o inválido
+//        }
 
         int datosDesEntero = Integer.parseInt(textoDescifrado);
 
