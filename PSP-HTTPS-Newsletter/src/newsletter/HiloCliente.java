@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -111,8 +112,18 @@ public class HiloCliente extends Thread {
 
                 //Separamos los datos del request en clave-valor
                 String[] datos = cuerpo.split("&");
-                String usuario = datos[0];
-                String email = datos[1];
+                String nombre = datos[0].split("=")[1];
+                String email = datos[1].split("=")[1];
+                nombre = URLDecoder.decode(nombre, StandardCharsets.UTF_8);
+                email= URLDecoder.decode(email, StandardCharsets.UTF_8);
+                
+                String resultado = nombre+":"+email+"\n";
+                
+                if (!NewsHelper.correoRepetido("basedatos", email)) {
+                    NewsHelper.escribirArchivo(resultado, "basedatos");
+                } else {
+                    System.err.println("CORREO REPETIDO");
+                }
 
                 //Ahora, comprobamos en el listado ya ya existe el usuario
                 
@@ -120,7 +131,7 @@ public class HiloCliente extends Thread {
                 
                 //Si no existe, mandamos mensaje SUCCESS
 
-                responseHTML = "";
+                responseHTML = String.format(Response.INDEX, "");
 
             } else { //GET
                 responseHTML = String.format(Response.INDEX, "");

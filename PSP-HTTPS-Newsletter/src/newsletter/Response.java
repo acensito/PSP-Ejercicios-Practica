@@ -31,7 +31,7 @@ public class Response {
                                 <input class="input is-medium" type="text" name="nombre" placeholder="Introduzca su nombre" required>
                             </div>
                             <div class="control">
-                                <input class="input is-medium" type="email" name="cantidad" placeholder="Introduzca email" required>
+                                <input class="input is-medium" type="email" name="email" placeholder="Introduzca email" required>
                             </div>
                             <div class="control">
                                 <button type="submit" class="button is-success is-medium">Enviar</button>
