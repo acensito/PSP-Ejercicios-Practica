@@ -66,6 +66,7 @@ public class HiloCliente extends Thread {
             salida.println(response);
             
         } catch (Exception e) {
+            System.err.println("Error en el hilo cliente: " + e.getMessage());
         }
 
     }
@@ -106,7 +107,5 @@ public class HiloCliente extends Thread {
         
         return responseHTML;
     }
-    
-    
     
 }

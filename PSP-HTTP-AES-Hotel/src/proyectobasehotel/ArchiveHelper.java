@@ -1,7 +1,7 @@
 
 package proyectobasehotel;
 
-import java.io.File;
+//import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -25,6 +25,7 @@ public class ArchiveHelper {
     private static final int DESENCRIPTAR = Cipher.DECRYPT_MODE;
     
 //    //comprueba si el nombre de archivo pasado por parametro existe
+//    //y en caso negativo, lo crea
 //    public static synchronized void verificarExisteArchivo(String nombreArchivo) {
 //        try {
 //            if (new File(nombreArchivo+".txt").createNewFile()) {
@@ -34,6 +35,7 @@ public class ArchiveHelper {
 //            System.err.println(ex.getMessage());
 //        }
 //    }
+    
     //si se usan dentro de un metodo sincronizado no tienen por que ser sincronizados
     public static synchronized void escribirArchivo(byte[] datos, String nombreArchivo) {
         Path ruta = Paths.get(nombreArchivo + ".txt");
@@ -81,19 +83,17 @@ public class ArchiveHelper {
     
     public static synchronized void guardarDatos(String archivo, String datos) {
         String textoDescifrado = descifrarDatos(archivo);
-        System.out.println("DEBUG DESCIFRADO: " + textoDescifrado);
+        System.out.println("DEBUG DESCIFRADO: " + textoDescifrado); //DEBUG
 //        if (textoDescifrado == null || textoDescifrado.isBlank()) {
 //            textoDescifrado = "0"; // Valor por defecto si el archivo estaba vacío o inválido
 //        }
 
         int datosDesEntero = Integer.parseInt(textoDescifrado);
-
         int datosEntero = Integer.parseInt(datos);
+        
         String resultado = String.valueOf(datosDesEntero+datosEntero);
-        System.out.println("DEBUG RESULTADO: " + resultado);
-        
+        System.out.println("DEBUG RESULTADO: " + resultado); //DEBUG
         byte[] resultadoCifrado = procesarDatos(resultado.getBytes(StandardCharsets.UTF_8), ENCRIPTAR);
-        
         escribirArchivo(resultadoCifrado, archivo);
     }
 }
