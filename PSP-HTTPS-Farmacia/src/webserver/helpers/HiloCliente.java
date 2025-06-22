@@ -63,7 +63,7 @@ public class HiloCliente extends Thread {
             //Parseamos los datos en caso de ser un request POST y estos los
             //almacenaremos como cuerpo de la solicitud
             StringBuilder cuerpo = new StringBuilder(); 
-            if (metodo.equals("POST") && contentLength > 0) {
+            if ("POST".equals(metodo) && contentLength > 0) {
                 char[] buffer = new char[contentLength];
                 entrada.read(buffer, 0, contentLength);
                 cuerpo.append(buffer);

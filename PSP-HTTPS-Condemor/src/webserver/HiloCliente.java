@@ -83,7 +83,7 @@ public class HiloCliente extends Thread {
             salida.println(response); // Envía la respuesta al cliente.
             
         } catch (Exception e) {
-            System.err.println("ERROR Hilo: " + e.getMessage());
+            //System.err.println("ERROR Hilo: " + e.getMessage());
         }
     }
     

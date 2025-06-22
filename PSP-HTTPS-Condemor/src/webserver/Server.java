@@ -1,6 +1,7 @@
 package webserver;
 
 import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLSocket;
 
 /**
  * En esta versión, vamos a modificar Frases a FrasesHelper para acceder al archivo
@@ -20,7 +21,13 @@ public class Server {
             System.out.println("Servidor ChiquitoWiki: [ INICIADO ]");
             System.out.println("URL Acceso: https://localhost:" + SSLHelpers.PORT);
             //Iniciamos el Loop de espera de llegada de hilos de clientes
-            LoopConexiones.iniciarServerLoop(serverSocketSSL);  
+//            LoopConexiones.iniciarServerLoop(serverSocketSSL);  
+            while (true) {
+                //esperamos y aceptamos las conexiones entrantes
+                SSLSocket cliente = (SSLSocket) serverSocketSSL.accept();
+                //creamos un nuevo hilo para manejar la conexion entrante
+                new HiloCliente(cliente).start();
+            }
         } catch (Exception e) {
             //aqui vienen errores que no quiero mostrar porque son por el 
             //certificado SSL.

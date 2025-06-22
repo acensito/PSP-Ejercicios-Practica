@@ -12,18 +12,18 @@ import java.nio.charset.StandardCharsets;
  */
 public class HiloCliente extends Thread {
     
-    private final Socket skclient;
+    private final Socket skClient;
 
     public HiloCliente(Socket skclient) {
-        this.skclient = skclient;
+        this.skClient = skclient;
     }
 
     @Override
     public void run() {
         
         try (
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(skclient.getInputStream()));
-            PrintWriter salida = new PrintWriter(skclient.getOutputStream(), true, StandardCharsets.UTF_8)
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(skClient.getInputStream()));
+            PrintWriter salida = new PrintWriter(skClient.getOutputStream(), true, StandardCharsets.UTF_8)
         ){
             String peticion = entrada.readLine();
             

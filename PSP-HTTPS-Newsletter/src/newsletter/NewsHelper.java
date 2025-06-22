@@ -8,15 +8,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-/**
- *
- * @author DGGC
- */
 public class NewsHelper {
     public static synchronized void escribirArchivo(String datos, String nombreArchivo) {
         Path ruta = Paths.get(nombreArchivo + ".txt");
         try {
-            //te ahorra comprobar si existe el archivo 
+            //-CREATEte ahorra comprobar si existe el archivo al escribir
             //.APPEND sirve para añadir al final del archivo
             Files.writeString(ruta, datos, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             System.out.println("Archivo actualizado correctamente");
@@ -26,7 +22,7 @@ public class NewsHelper {
     }
     
     
-public static boolean correoRepetido(String nombreArchivo, String correoBuscado) {
+    public static boolean correoRepetido(String nombreArchivo, String correoBuscado) {
         Path ruta = Paths.get(nombreArchivo + ".txt");
 
         try {
@@ -43,4 +39,8 @@ public static boolean correoRepetido(String nombreArchivo, String correoBuscado)
 
         return false; //no se encontro
     }
+    
 }
+
+
+
